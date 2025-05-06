@@ -9,11 +9,10 @@ import com.school_shuttle.back.model.Motorista;
 import com.school_shuttle.back.model.Usuario;
 
 public interface IMotoristaRepository extends JpaRepository<Motorista, Long> {
-    Optional<Motorista> findByEmail(String email);
 
-    Optional<Motorista> findById(Long id);
+    public Optional<Motorista> findById(Long id);
 
-    Optional<Motorista> findByNome(String nome);
+    public List<Motorista> findByUser_Id(Long userId);
 
-    List<Motorista> findMotoristaByUsuario(Usuario usuario);
+    public Optional<Motorista> findByPlacaVeiculo(String placaVeiculo);
 }

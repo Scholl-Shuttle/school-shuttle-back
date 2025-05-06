@@ -12,13 +12,17 @@ import com.school_shuttle.back.model.Usuario;
 
 public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    Optional<Usuario> findByEmail(String email);
+    public Optional<Usuario> findByEmail(String email);
 
-    Optional<Usuario> findById(@NonNull Long id);
+    public Optional<Usuario> findById(@NonNull Long id);
 
-    Optional<Usuario> findByNome(String nome);
+    public Optional<Usuario> findByNome(String nome);
 
-    Optional<Usuario> findUsuarioByMotorista(Motorista motorista);
+    public Optional<Usuario> findByCpf(String cpf);
 
-    Optional<Usuario> findUsuarioByResponsavel(Responsavel responsavel);
+    public Optional<Usuario> findByTelefone(String telefone);
+
+    public Optional<Usuario> findUsuarioByMotorista(Motorista motorista);
+
+    public Optional<Usuario> findUsuarioByResponsavel(Responsavel responsavel);
 }

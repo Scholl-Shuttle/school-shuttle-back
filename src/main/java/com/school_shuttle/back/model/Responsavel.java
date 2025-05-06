@@ -16,8 +16,9 @@ public class Responsavel {
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
     private String nomeCrianca;
+    @NonNull
+    private String endereco;
 
     @JsonIgnore
     @OneToOne(mappedBy = "usuario")
@@ -27,8 +28,9 @@ public class Responsavel {
     public Responsavel() {
     }
 
-    public Responsavel(String nomeCrianca, Usuario usuario) {
-
+    public Responsavel(String endereco, String nomeCrianca, Usuario usuario) {
+        this.endereco = endereco;
+        this.nomeCrianca = nomeCrianca;
         this.usuario = usuario;
     }
 
@@ -46,5 +48,21 @@ public class Responsavel {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getNomeCrianca() {
+        return this.nomeCrianca;
+    }
+
+    public void setNomeCrianca(String nomeCrianca) {
+        this.nomeCrianca = nomeCrianca;
+    }
+
+    public String getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }

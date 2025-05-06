@@ -38,6 +38,8 @@ public class Usuario implements UserDetails {
     }
 
     public Usuario(String cpf, String telefone, String nome, String email, String senha) {
+        this.cpf = cpf;
+        this.telefone = telefone;
         this.nome = nome;
         this.email = email;
         this.senha = senha;

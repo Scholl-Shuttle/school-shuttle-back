@@ -5,17 +5,14 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.school_shuttle.back.model.Responsavel;
+import com.school_shuttle.back.model.Usuario;
+import java.util.List;
 
 public interface IResponsavel extends JpaRepository<Responsavel, Long> {
 
-    Optional<Responsavel> findByEmail(String email);
+    public Optional<Responsavel> findById(Long id);
 
-    Optional<Responsavel> findById(Long id);
+    public Optional<Responsavel> findByUser_Id(Long userId);
 
-    Optional<Responsavel> findByNome(String nome);
-
-    Optional<Responsavel> findByTelefone(String telefone);
-
-    Optional<Responsavel> findByCpf(String cpf);
-
+    public Optional<Responsavel> findByNomeCrianca(String nomeCrianca);
 }
