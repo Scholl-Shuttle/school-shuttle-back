@@ -14,9 +14,17 @@ public record UsuarioDTO(
 		@NotBlank(message = "O e-mail é obrigatório.")
 		@Email(message = "Insira um e-mail válido.")
 		String email,
-		String senha
+		String senha,
+
+		@NotBlank(message = "O cpf é obrigatório.")
+		String cpf,
+
+		@NotBlank(message = "telefone é obrigatório.")
+		String telefone
+
+
 ) {
 	public UsuarioDTO(Usuario user) {
-		this(user.getId(), user.getNome(), user.getEmail(), user.getSenha());
+		this(user.getId(), user.getNome(), user.getEmail(), user.getSenha(), user.getCpf(), user.getTelefone());
 	}
 }
