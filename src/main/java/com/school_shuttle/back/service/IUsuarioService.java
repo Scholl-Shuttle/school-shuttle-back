@@ -17,5 +17,5 @@ public interface IUsuarioService {
 
     public String atualizarUsuario(UsuarioDTO json, Long id);
 
-    public String deletarUsuario(Long id);
+    public void deletarUsuario(Long id);
 }
