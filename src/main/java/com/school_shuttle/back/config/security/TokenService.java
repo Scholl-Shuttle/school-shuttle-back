@@ -1,13 +1,14 @@
 package com.school_shuttle.back.config.security;
 
 
-import org.springframework.stereotype.Service;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.school_shuttle.back.config.error.ErroCustomizado;
 import com.school_shuttle.back.model.Usuario;
-import com.auth0.jwt.exceptions.JWTVerificationException;
+
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -43,8 +44,9 @@ public class TokenService {
                     .withClaim("userId", usuario.getId())
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
-        } catch (Exception e) {
-            throw new ErroCustomizado("Erro ao gerar token JWT!");
+        } catch (JWTCreationException exception) {
+            // Invalid Signing configuration / Couldn't convert Claims.
+            throw new ErroCustomizado("Erro ao gerar token jwt");
         }
     }
 

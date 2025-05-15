@@ -3,6 +3,7 @@ package com.school_shuttle.back.model;
 import org.hibernate.annotations.OnDelete;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.school_shuttle.back.dto.MotoristaDTO;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
@@ -29,9 +30,8 @@ public class Motorista {
     public Motorista() {
     }
 
-    public Motorista(String placaVeiculo, Usuario usuario) {
+    public Motorista(String placaVeiculo) {
         this.placaVeiculo = placaVeiculo;
-        this.usuario = usuario;
     }
 
     public long getId() {
@@ -56,5 +56,11 @@ public class Motorista {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public void atualizarMotorista(MotoristaDTO json) {
+        if (json.placaDoVeiculo() != null && !json.placaDoVeiculo().isBlank()) {
+            this.placaVeiculo = json.placaDoVeiculo();
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.school_shuttle.back.model;
 import org.hibernate.annotations.OnDelete;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.school_shuttle.back.dto.ResponsavelDTO;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
@@ -28,10 +29,10 @@ public class Responsavel {
     public Responsavel() {
     }
 
-    public Responsavel(String endereco, String nomeCrianca, Usuario usuario) {
+    public Responsavel(String endereco, String nomeCrianca) {
         this.endereco = endereco;
         this.nomeCrianca = nomeCrianca;
-        this.usuario = usuario;
+
     }
 
     public long getId() {
@@ -64,5 +65,14 @@ public class Responsavel {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public void atualizarResponsavel(ResponsavelDTO json) {
+        if (json.nomeCrianca() != null) {
+            this.nomeCrianca = json.nomeCrianca();
+        }
+        if (json.endereco() != null) {
+            this.endereco = json.endereco();
+        }
     }
 }
