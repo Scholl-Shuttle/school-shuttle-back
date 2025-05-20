@@ -35,7 +35,7 @@ public class ResponsavelService implements IResponsavelService {
     public Optional<Responsavel> consultaResponsavelUsuario(Long idUsuario) {
         logger.info("Service > List responsavel by idUsuario");
 
-        return responsavelRepository.findByUser_Id(idUsuario);
+        return responsavelRepository.findByUsuario_Id(idUsuario);
     }
 
     public Responsavel consultaResponsavelPorId(Long idResponsavel) {

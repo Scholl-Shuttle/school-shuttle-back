@@ -9,6 +9,7 @@ import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -23,7 +24,8 @@ public class Motorista {
     private String placaVeiculo;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "usuario")
+    @OneToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @OnDelete(action = org.hibernate.annotations.OnDeleteAction.CASCADE)
     private Usuario usuario;
 

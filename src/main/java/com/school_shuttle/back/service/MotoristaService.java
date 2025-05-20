@@ -51,7 +51,7 @@ public class MotoristaService implements IMotoristaService {
     public Optional<Motorista> consultaMotoristaPorUsuario(Long idUsuario) {
         logger.info("Service > List motorista by idUsuario");
 
-        return motoristaRepository.findByUser_Id(idUsuario);
+        return motoristaRepository.findByUsuario_Id(idUsuario);
     }
 
     @Override

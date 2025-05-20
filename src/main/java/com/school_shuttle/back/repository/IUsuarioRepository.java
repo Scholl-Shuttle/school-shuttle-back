@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.school_shuttle.back.model.Motorista;
-import com.school_shuttle.back.model.Responsavel;
 import com.school_shuttle.back.model.Usuario;
 
 public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
@@ -20,10 +18,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
     public Optional<Usuario> findByCpf(String cpf);
 
     public Optional<Usuario> findByTelefone(String telefone);
-
-    public Optional<Usuario> findUsuarioByMotorista(Motorista motorista);
-
-    public Optional<Usuario> findUsuarioByResponsavel(Responsavel responsavel);
 
     public UserDetails findByEmail(String email);
 

@@ -10,7 +10,7 @@ public interface IResponsavelRepository extends JpaRepository<Responsavel, Long>
 
     public Optional<Responsavel> findById(Long id);
 
-    public Optional<Responsavel> findByUser_Id(Long userId);
+    public Optional<Responsavel> findByUsuario_Id(Long usuarioId);
 
     public Optional<Responsavel> findByNomeCrianca(String nomeCrianca);
 }

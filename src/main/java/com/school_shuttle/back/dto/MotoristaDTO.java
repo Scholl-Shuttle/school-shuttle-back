@@ -1,15 +1,12 @@
 package com.school_shuttle.back.dto;
 
+import com.school_shuttle.back.model.Motorista;
+
 public record MotoristaDTO(
         Long id,
         String placaDoVeiculo
 ) {
-    public MotoristaDTO {
-        if (id == null) {
-            throw new IllegalArgumentException("O id é obrigatório.");
-        }
-        if (placaDoVeiculo == null || placaDoVeiculo.isBlank()) {
-            throw new IllegalArgumentException("A placa do veículo é obrigatória.");
-        }
+    public MotoristaDTO(Motorista motorista) {
+        this(motorista.getId(), motorista.getPlacaVeiculo());
     }
 }

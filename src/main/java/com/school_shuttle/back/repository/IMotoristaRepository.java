@@ -10,7 +10,7 @@ public interface IMotoristaRepository extends JpaRepository<Motorista, Long> {
 
     public Optional<Motorista> findById(Long id);
 
-    public Optional<Motorista> findByUser_Id(Long userId);
+    public Optional<Motorista> findByUsuario_Id(Long usuarioId);
 
     public Optional<Motorista> findByPlacaVeiculo(String placaVeiculo);
 }
