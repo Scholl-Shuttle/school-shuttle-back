@@ -36,7 +36,6 @@ public class Usuario implements UserDetails {
 
     public Usuario() {
     }
-    
 //contrutor
 
     public Usuario(String cpf, String telefone, String nome, String email, String senha) {
