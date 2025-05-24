@@ -70,10 +70,6 @@ public class MotoristaService implements IMotoristaService {
     public Motorista cadastrarMotorista(MotoristaDTO json) {
         logger.info("Service > Create motorista");
 
-        if (json.id() == null) {
-            throw new ErroCustomizado("Id is null");
-        }
-
         var motorista = new Motorista(json.placaDoVeiculo());
 
         return motoristaRepository.save(motorista);

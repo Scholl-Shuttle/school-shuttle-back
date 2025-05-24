@@ -2,6 +2,9 @@ package com.school_shuttle.back.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +33,8 @@ public class APIResponsavelController {
 
     @Autowired
     IResponsavelService responsavelService;
+
+    Logger logger = LogManager.getLogger(getClass());
 
     @GetMapping
     public List<ResponsavelDTO> consultaTodosResponsaveis() {
@@ -63,12 +68,11 @@ public class APIResponsavelController {
         return ResponseEntity.created(uri).body(new ResponsavelDTO(responsavel));
     }
 
-    @PostMapping("/usuario")
+    @PostMapping("/usuario/{idResponsavel}")
     @Transactional
-    public ResponsavelDTO adicionarUsuario(@RequestBody ResponsavelDTO json, HttpServletRequest request) {
+    public ResponsavelDTO adicionarUsuario(@PathVariable Long idResponsavel, HttpServletRequest request) {
         var userId = request.getAttribute("userId");
-        var responsavel = responsavelService.adicionarUsuario((Long) userId, json);
-
+        var responsavel = responsavelService.adicionarUsuario(idResponsavel, (Long) userId);
         return new ResponsavelDTO(responsavel);
     }
 

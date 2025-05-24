@@ -22,6 +22,7 @@ public class ResponsavelService implements IResponsavelService {
     @Autowired
     private IResponsavelRepository responsavelRepository;
 
+    @Autowired
     private IUsuarioRepository usuarioRepository;
 
     Logger logger = LogManager.getLogger(getClass());
@@ -53,25 +54,18 @@ public class ResponsavelService implements IResponsavelService {
     public Responsavel cadastrarResponsavel(ResponsavelDTO json) {
         logger.info("Service > Create responsavel");
 
-        if (json.id() == null) {
-            throw new ErroCustomizado("Id is null");
-        }
-
         var responsavel = new Responsavel(json.endereco(), json.nomeCrianca());
 
         return responsavelRepository.save(responsavel);
     }
 
-    public Responsavel adicionarUsuario(Long idResponsavel, ResponsavelDTO json) {
+    public Responsavel adicionarUsuario(Long idResponsavel, Long idUsuario) {
         logger.info("Service > Add usuario to responsavel");
-
-        if (json.id() == null) {
-            throw new EntityNotFoundException("Id of Responsavel is null");
-        }
 
         var responsavel = responsavelRepository.findById(idResponsavel);
 
         if (responsavel.isEmpty()) {
+            logger.error("Responsavel not found:", idResponsavel);
             throw new EntityNotFoundException("Responsavel not found");
         }
 
@@ -79,7 +73,7 @@ public class ResponsavelService implements IResponsavelService {
             throw new ErroCustomizado("Responsavel already has a user");
         }
 
-        var usuario = usuarioRepository.findById(json.id());
+        var usuario = usuarioRepository.findById(idUsuario);
 
         if (usuario.isEmpty()) {
             throw new EntityNotFoundException("User not found");

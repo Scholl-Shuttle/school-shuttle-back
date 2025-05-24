@@ -15,7 +15,7 @@ public interface IResponsavelService {
 
     public Responsavel cadastrarResponsavel(ResponsavelDTO json);
 
-    public Responsavel adicionarUsuario(Long idResponsavel, ResponsavelDTO json);
+    public Responsavel adicionarUsuario(Long idResponsavel, Long idUsuario);
 
     public Responsavel atualizarResponsavel(ResponsavelDTO json, Long idResponsavel);
 
